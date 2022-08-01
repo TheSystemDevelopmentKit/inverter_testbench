@@ -33,7 +33,7 @@ from eldo.testbench import testbench as etb
 
 import numpy as np
 
-class myentity(rtl,eldo,thesdk):
+class inverter_testbench(rtl,eldo,thesdk):
     @property
     def _classfile(self):
         return os.path.dirname(os.path.realpath(__file__)) + "/"+__name__
@@ -121,7 +121,7 @@ class myentity(rtl,eldo,thesdk):
                       }
               self.eldoplotextras = ['v(IN)','v(OUT)']
 
-              # Example of defining supplies (not used here because the example myentity has no supplies)
+              # Example of defining supplies (not used here because the example inverter_testbench has no supplies)
               #_=eldo_dcsource(self,name='dd',value=self.vdd,pos='VDD',neg='VSS',extract=True,ext_start=2e-9)
               #_=eldo_dcsource(self,name='ss',value=0,pos='VSS',neg='0')
 
@@ -148,14 +148,14 @@ class myentity(rtl,eldo,thesdk):
 
 if __name__=="__main__":
     import matplotlib.pyplot as plt
-    from  myentity import *
-    from  myentity.controller import controller as myentity_controller
+    from  inverter_testbench import *
+    from  inverter_testbench.controller import controller as inverter_testbench_controller
     import pdb
     length=1024
     rs=100e6
     indata=np.random.randint(2,size=length).reshape(-1,1);
     #indata=np.random.randint(2,size=length)
-    controller=myentity_controller()
+    controller=inverter_testbench_controller()
     controller.Rs=rs
     #controller.reset()
     #controller.step_time()
@@ -164,7 +164,7 @@ if __name__=="__main__":
     models=[ 'py', 'sv', 'vhdl', 'eldo' ]
     duts=[]
     for model in models:
-        d=myentity()
+        d=inverter_testbench()
         duts.append(d) 
         d.model=model
         d.Rs=rs

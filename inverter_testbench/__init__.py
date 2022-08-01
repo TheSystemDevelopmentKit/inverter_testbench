@@ -1,9 +1,9 @@
 """
 =========
-My Entity
+inverter_testbench
 =========
 
-My Entity model template The System Development Kit
+inverter_testbench model template The System Development Kit
 Used as a template for all TheSyDeKick Entities.
 
 Current docstring documentation style is Numpy
@@ -27,7 +27,7 @@ from thesdk import *
 
 import numpy as np
 
-class myentity(thesdk):
+class inverter_testbench(thesdk):
     @property
     def _classfile(self):
         return os.path.dirname(os.path.realpath(__file__)) + "/"+__name__
@@ -81,8 +81,8 @@ class myentity(thesdk):
 
 if __name__=="__main__":
     import matplotlib.pyplot as plt
-    from  myentity import *
-    from  myentity.controller import controller as myentity_controller
+    from  inverter_testbench import *
+    from  inverter_testbench.controller import controller as inverter_testbench_controller
     import pdb
     import math
     length=1024
@@ -92,7 +92,7 @@ if __name__=="__main__":
     models=[ 'py']
     duts=[]
     for model in models:
-        d=myentity()
+        d=inverter_testbench()
         duts.append(d) 
         d.model=model
         d.Rs=rs
