@@ -96,6 +96,7 @@ class inverter_testbench(thesdk):
             p=signal_plotter()
             plotters.append(p) 
             p.plotmodel=d.model
+            p.plotprefix='parallel'
             p.plotvdd=self.vdd
             p.Rs = self.Rs
             p.IOS.Members['A']=d.IOS.Members['A']
@@ -140,6 +141,7 @@ class inverter_testbench(thesdk):
             p=signal_plotter()
             plotters.append(p) 
             p.plotmodel=d.model
+            p.plotprefix='serial'
             print(p.plotmodel)
             p.plotvdd=self.vdd
             p.Rs = self.Rs
@@ -177,6 +179,9 @@ class inverter_testbench(thesdk):
         '''
         if self.model=='py':
             self.main()
+            if self.par:
+                # Return empty dict not to block the execution
+                self.queue.put({})
 
 if __name__=="__main__":
     from  inverter_testbench import *
