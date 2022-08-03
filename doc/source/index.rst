@@ -3,7 +3,7 @@
    but it should at least contain the root `toctree` directive.
 
 ==================
-Inverter testbench
+Inverter_testbench
 ==================
 
 .. toctree::
