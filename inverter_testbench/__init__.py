@@ -37,7 +37,7 @@ class inverter_testbench(thesdk):
         self.Rs =  100e6;            # Sampling frequency
         self.vdd = 1.0               # Suplly voltage
         self.model='py';             # Can be set externally, but is not propagated
-        self.models=['py','sv','vhdl','eldo','spectre']
+        self.models=['py','sv','vhdl', 'ghdl', 'eldo','spectre', 'ngspice']
         self.configuration='parallel'
         #self.models=['ngspice']
         self.par= False              # By default, no parallel processing
@@ -187,7 +187,7 @@ if __name__=="__main__":
     from  inverter_testbench import *
     import pdb
     tb=inverter_testbench()
-    tb.models=['py','sv','vhdl','eldo','spectre']
+    tb.models=['py','icarus','ghdl','ngspice']
     #tb.configuration='parallel'
     tb.configuration='serial'
     tb.run()
