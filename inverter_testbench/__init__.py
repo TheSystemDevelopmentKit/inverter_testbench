@@ -112,6 +112,10 @@ class inverter_testbench(thesdk):
         for d in duts:
             d.init()
             d.run()
+            if self.par:
+                # To prevent warning from empty return dict
+                ret_dict={'Run status':'OK'}
+                self.queue.put(ret_dict)
         for p in plotters:
             p.init()
             p.run()
@@ -157,6 +161,10 @@ class inverter_testbench(thesdk):
         for d in duts:
             d.init()
             d.run()
+            if self.par:
+                # To prevent warning from empty return dict
+                ret_dict={'Run status':'OK'}
+                self.queue.put(ret_dict)
         for p in plotters:
             p.init()
             p.run()
